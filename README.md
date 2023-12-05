@@ -7,8 +7,10 @@ Neste projeto, você será capaz de ler ebooks e favoritar eles!
 
 https://github.com/FiilipeRibeiro/Desafio-Tecnico-Leitor-de-Ebooks/assets/96142984/af1ab3f2-5b25-4938-b546-d0da528efd16
 
-
 Você pode [baixar o zip](https://github.com/FiilipeRibeiro/Desafio-Tecnico-Leitor-de-Ebooks/archive/refs/heads/master.zip) com o código final do projeto ou [acessar o código fonte](https://github.com/FiilipeRibeiro/Desafio-Tecnico-Leitor-de-Ebooks).
+
+## APK
+[apk](https://drive.google.com/file/d/17aFmB7LmKkXepZgVsbc4fZ18UUPzd7qQ/view?usp=drivesdk)
 
 ## 🛠️ Abrir e rodar o projeto
 
