@@ -2,7 +2,7 @@
 
 ## 🔨 Características do projeto
 
-Neste projeto, você será capaz de ler ebooks e deixar favoritar eles!
+Neste projeto, você será capaz de ler ebooks e favoritar eles!
 
 
 https://github.com/FiilipeRibeiro/Desafio-Tecnico-Leitor-de-Ebooks/assets/96142984/af1ab3f2-5b25-4938-b546-d0da528efd16
