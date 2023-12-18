@@ -31,13 +31,13 @@ Para executar o aplicativo localmente, você precisará ter instalado:
 1 - Clone o repositório:
 
 ```bash
-git clone https://github.com/FiilipeRibeiro/Desafio-Tecnico-Leitor-de-Ebooks.git
+git clone https://github.com/FiilipeRibeiro/LeitorDeEbooks.git
 ```
 
 2 - Navegue até o diretório do projeto:
 
 ```bash
-cd Desafio-Tecnico-Leitor-de-Ebooks
+cd LeitorDeEbooks
 ```
 
 3 - Instale as dependências:
