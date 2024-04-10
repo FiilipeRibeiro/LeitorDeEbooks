@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 class EbookModel {
   final String title;
   final String author;
@@ -11,7 +13,7 @@ class EbookModel {
     required this.download_url,
   });
 
-  factory EbookModel.fromMap(Map<String, dynamic> map) {
+ static EbookModel fromJson(dynamic map) {
     return EbookModel(
       title: map['title'],
       author: map['author'],
