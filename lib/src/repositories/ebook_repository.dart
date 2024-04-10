@@ -1,16 +1,15 @@
-import 'package:dio/dio.dart';
 import 'package:estudando/src/models/ebook_model.dart';
+import 'http/http_client_interface.dart';
 
 const url = 'https://escribo.com/books.json';
 
 class EbookRepository {
-  final Dio dio;
+  final IHttpClient client;
 
-  EbookRepository(this.dio);
+  EbookRepository(this.client);
 
   Future<List<EbookModel>> getEbooks() async {
-    final response = await dio.get(url);
-    final body = response.data as List;
-    return body.map(EbookModel.fromJson).toList();
+    final body = await client.get(url);
+    return (body as List).map(EbookModel.fromJson).toList();
   }
 }

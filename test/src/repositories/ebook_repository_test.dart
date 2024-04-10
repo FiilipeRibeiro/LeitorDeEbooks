@@ -3,21 +3,20 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:estudando/src/repositories/ebook_repository.dart';
+import 'package:estudando/src/repositories/http/http_client_interface.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 class DioMock extends Mock implements DioForNative {}
 
+class IHttpClientMock extends Mock implements IHttpClient {}
+
 void main() async {
   test('deve retornar todos os Ebooks', () async {
-    final dio = DioMock();
-    final response = Response(
-      requestOptions: RequestOptions(path: ''),
-      data: jsonDecode(jsonResponse),
-      statusCode: 200,
-    );
-    when(() => dio.get(url)).thenAnswer((_) async => response);
-    final service = EbookRepository(dio);
+    final client = IHttpClientMock();
+    when(() => client.get(url))
+        .thenAnswer((_) async => jsonDecode(jsonResponse));
+    final service = EbookRepository(client);
     final ebooks = await service.getEbooks();
     expect(ebooks[0].title, 'The Bible of Nature');
   });

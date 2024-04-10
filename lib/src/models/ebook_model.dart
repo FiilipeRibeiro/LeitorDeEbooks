@@ -13,7 +13,7 @@ class EbookModel {
     required this.download_url,
   });
 
- static EbookModel fromJson(dynamic map) {
+  static EbookModel fromJson(dynamic map) {
     return EbookModel(
       title: map['title'],
       author: map['author'],
@@ -21,4 +21,11 @@ class EbookModel {
       download_url: map['download_url'],
     );
   }
+
+  static EbookModel stub() => EbookModel(
+        title: 'test',
+        author: 'test',
+        cover_url: 'test',
+        download_url: 'test',
+      );
 }
