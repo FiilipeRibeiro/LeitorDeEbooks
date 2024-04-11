@@ -9,9 +9,31 @@ class HomeController extends ChangeNotifier {
   HomeController(this._service);
 
   var ebooks = <EbookModel>[];
+  var favorites = <EbookModel>[];
 
   Future<void> fetchAllEbooks() async {
     ebooks = await _service.getEbooks();
     notifyListeners();
   }
+
+  bool isFavorite(EbookModel ebook) {
+    return favorites.contains(ebook);
+  }
+
+  void toggleFavorite(EbookModel ebook) {
+    if (favorites.contains(ebook)) {
+      favorites.remove(ebook);
+    } else {
+      favorites.add(ebook);
+    }
+    notifyListeners();
+  }
+
+  void removeFavorites(EbookModel ebook) {
+  if (favorites.contains(ebook)) {
+    favorites.remove(ebook);
+    notifyListeners();
+  }
+}
+
 }

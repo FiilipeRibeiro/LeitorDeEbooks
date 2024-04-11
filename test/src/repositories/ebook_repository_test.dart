@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:estudando/src/repositories/ebook_repository.dart';
 import 'package:estudando/src/repositories/http/http_client_interface.dart';
