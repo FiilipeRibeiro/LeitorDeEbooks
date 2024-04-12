@@ -1,8 +1,9 @@
 import 'package:estudando/src/controllers/home_controller.dart';
-import 'package:estudando/src/models/ebook_model.dart';
 import 'package:estudando/src/repositories/dio/dio_client.dart';
 import 'package:estudando/src/repositories/ebook_repository.dart';
 import 'package:flutter/material.dart';
+
+import 'epub_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,48 +60,61 @@ class _HomePageState extends State<HomePage> {
                     itemCount: controller.ebooks.length,
                     itemBuilder: (BuildContext context, int index) {
                       final ebook = controller.ebooks[index];
-                      return Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              ebook.cover_url,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          ListTile(
-                            title: Text(
-                              ebook.title,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 24,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EpubViewerPage(
+                                downloadUrl: ebook.download_url,
+                                title: ebook.title,
                               ),
                             ),
-                            subtitle: Text(ebook.author),
-                            trailing: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  controller.toggleFavorite(ebook);
-                                });
-                              },
-                              icon: controller.isFavorite(ebook)
-                                  ? const Icon(
-                                      Icons.favorite,
-                                      color: Colors.red,
-                                      size: 35,
-                                    )
-                                  : const Icon(
-                                      Icons.favorite_border,
-                                      size: 35,
-                                    ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                ebook.cover_url,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          const Divider(),
-                          const SizedBox(
-                            height: 10,
-                          )
-                        ],
+                            ListTile(
+                              title: Text(
+                                ebook.title,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 24,
+                                ),
+                              ),
+                              subtitle: Text(ebook.author),
+                              trailing: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    controller.toggleFavorite(ebook);
+                                  });
+                                },
+                                icon: controller.isFavorite(ebook)
+                                    ? const Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                        size: 35,
+                                      )
+                                    : const Icon(
+                                        Icons.favorite_border,
+                                        size: 35,
+                                      ),
+                              ),
+                            ),
+                            const Divider(),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
                       );
                     },
                   ),

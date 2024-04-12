@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import '../models/ebook_model.dart';
 
 class HomeController extends ChangeNotifier {
-  final EbookRepository _service;
+  final EbookRepository service;
 
-  HomeController(this._service);
+  HomeController(this.service);
 
   var ebooks = <EbookModel>[];
   var favorites = <EbookModel>[];
 
   Future<void> fetchAllEbooks() async {
-    ebooks = await _service.getEbooks();
+    ebooks = await service.getEbooks();
     notifyListeners();
   }
 
@@ -30,10 +30,9 @@ class HomeController extends ChangeNotifier {
   }
 
   void removeFavorites(EbookModel ebook) {
-  if (favorites.contains(ebook)) {
-    favorites.remove(ebook);
-    notifyListeners();
+    if (favorites.contains(ebook)) {
+      favorites.remove(ebook);
+      notifyListeners();
+    }
   }
-}
-
 }
