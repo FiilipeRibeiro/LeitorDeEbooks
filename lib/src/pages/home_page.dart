@@ -28,25 +28,32 @@ class _HomePageState extends State<HomePage> {
       initialIndex: 1,
       length: tabsCount,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Ebooks Reader'),
-          centerTitle: true,
-          backgroundColor: Colors.amber,
-          notificationPredicate: (ScrollNotification notification) {
-            return notification.depth == 1;
-          },
-          scrolledUnderElevation: 4.0,
-          bottom: const TabBar(
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.book),
-                text: 'Books',
-              ),
-              Tab(
-                icon: Icon(Icons.favorite),
-                text: 'Favorites',
-              )
-            ],
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(90),
+          child: AppBar(
+            backgroundColor: Colors.amber,
+            notificationPredicate: (ScrollNotification notification) {
+              return notification.depth == 1;
+            },
+            scrolledUnderElevation: 4.0,
+            bottom: const TabBar(
+              tabs: <Widget>[
+                Tab(
+                  icon: Icon(
+                    Icons.book,
+                    size: 40,
+                  ),
+                  text: 'Books',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.favorite,
+                    size: 40,
+                  ),
+                  text: 'Favorites',
+                )
+              ],
+            ),
           ),
         ),
         body: Padding(
@@ -122,36 +129,49 @@ class _HomePageState extends State<HomePage> {
                     itemCount: controller.favorites.length,
                     itemBuilder: (BuildContext context, int index) {
                       final ebook = controller.favorites[index];
-                      return Column(
-                        children: [
-                          ListTile(
-                            title: Text(
-                              ebook.title,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EpubViewerPage(
+                                downloadUrl: ebook.download_url,
+                                title: ebook.title,
                               ),
                             ),
-                            subtitle: Text(ebook.author),
-                            leading: Image.network(ebook.cover_url),
-                            trailing: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  controller.removeFavorites(ebook);
-                                });
-                              },
-                              icon: const Icon(
-                                Icons.favorite,
-                                color: Colors.red,
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            ListTile(
+                              title: Text(
+                                ebook.title,
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              subtitle: Text(ebook.author),
+                              leading: Image.network(ebook.cover_url),
+                              trailing: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    controller.removeFavorites(ebook);
+                                  });
+                                },
+                                icon: const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                ),
                               ),
                             ),
-                          ),
-                          const Divider(),
-                          const SizedBox(
-                            height: 10,
-                          )
-                        ],
+                            const Divider(),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
                       );
                     },
                   ),
