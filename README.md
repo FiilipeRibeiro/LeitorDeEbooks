@@ -1,6 +1,6 @@
 # Leitor de eBooks
 
-![Leitor de eBooks](assets/Leitorde_ebooks.mp4)
+https://github.com/FiilipeRibeiro/LeitorDeEbooks/assets/96142984/2fab86d8-dc2f-4d48-82ba-0d8ba2935111
 
 O Leitor de eBooks é um aplicativo móvel desenvolvido em Flutter que permite aos usuários lerem eBooks em seus dispositivos móveis de maneira fácil e conveniente. Este aplicativo oferece uma experiência de leitura agradável com recursos de download de eBooks, visualização de eBooks em formato EPUB e muito mais.
 
